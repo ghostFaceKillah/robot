@@ -1,0 +1,19 @@
+TODOs:
+    - [ ] read in data somehow in go
+
+    - [ ] reimplement (with tests)
+        - [ ] bresenham2D
+        - [ ] mapCorrelation
+
+
+Tuesday, 12th May 2020
+----------------------
+
+The goal of the project is to learn slam / reimplement it on my own in go.
+
+I got data from Nikolai!
+
+I analyzed the code.
+
+
+
