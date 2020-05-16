@@ -1,5 +1,12 @@
 package raytrace
 
+import (
+	"image"
+	"image/color"
+	"image/png"
+	"os"
+)
+
 // here's a good explaination of the Bresenham's algo
 // https://www.youtube.com/watch?v=vlZFSzCIwoc
 // some details are still kind of unclear to me, but OK
@@ -25,10 +32,11 @@ func Sign(x int) int {
 }
 
 type Point struct {
-	x int
-	y int
+	X int
+	Y int
 }
 
+// this _does_include_ the point x_2, y_2
 func Bresenham2D(x_1, x_2, y_1, y_2 int) []Point {
 	var resu []Point
 
@@ -41,7 +49,7 @@ func Bresenham2D(x_1, x_2, y_1, y_2 int) []Point {
 	if dx > dy {
 		c := -dx
 		y := y_1
-		for x := x_1; x != x_2; x += g {
+		for x := x_1; x <= x_2; x += g {
 			resu = append(resu, Point{x, y})
 			c += 2 * dy
 			if c > 0 {
@@ -52,7 +60,7 @@ func Bresenham2D(x_1, x_2, y_1, y_2 int) []Point {
 	} else {
 		c := -dy
 		x := x_1
-		for y := y_1; y != y_2; y += h {
+		for y := y_1; y <= y_2; y += h {
 			resu = append(resu, Point{x, y})
 			c += 2 * dx
 			if c > 0 {
@@ -63,4 +71,34 @@ func Bresenham2D(x_1, x_2, y_1, y_2 int) []Point {
 	}
 
 	return resu
+}
+
+// make an example image, draw a line using Bresenham with it
+func ExampleBresenhamUsage() {
+	// open a file
+	f, err := os.Create("img.png")
+	if err != nil {
+		panic(err)
+	}
+
+	defer f.Close()
+
+	// write some bytes
+	img := image.NewRGBA(image.Rect(0, 0, 100, 100))
+
+	from_x := 20
+	from_y := 20
+	to_x := 40
+	to_y := 30
+
+	marked_pix := Bresenham2D(from_x, to_x, from_y, to_y)
+
+	for _, pix := range marked_pix {
+		img.Set(pix.X, pix.Y, color.RGBA{255, 0, 0, 255})
+	}
+
+	img.Set(from_x, from_y, color.RGBA{255, 0, 0, 255})
+	img.Set(to_x, to_y, color.RGBA{255, 0, 0, 255})
+
+	png.Encode(f, img)
 }
