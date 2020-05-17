@@ -17,3 +17,21 @@ I analyzed the code.
 
 
 
+Sunday, 17th of May
+-------------------
+Yesterday completed the bresenham debugging.
+Today working on correlation 2d.
+
+There is a little problem that gonum matrices only support float64 numbers.
+This means for processing img data we can:
+- treat uint8 arrays as normal slices / arrays.
+- use image library
+
+For now I think I will leave the correlation alone, because it is unclear
+yet how the correlation function will be used.
+
+So now I will focus on transferring the data from python to go.
+
+We will need some protobuf messages. We will serialize to these on python side
+and read them again in go.
+
