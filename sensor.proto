@@ -5,14 +5,14 @@ package msg;
 // option go_package = "msg";
 
 message Odom2DUpdate {
-    int64 timestamp = 1;
+    double timestamp = 1;
     double x = 2;      // orientation: forward
     double y = 3;      // orientation: left
     double theta = 4;  // orientation: counterclockwise rotation around z
 }
 
 message Lidar2DScan {
-    int64 timestamp = 1;  // using timestamp stuff
+    double timestamp = 1;  // using timestamp stuff
     repeated double scan = 2;    // 1 x 1081 in the case of data from
     uint32 n_scans = 3;
     double min_range = 4;
@@ -22,7 +22,7 @@ message Lidar2DScan {
 
 message NikolaiScan {
     Odom2DUpdate odom = 1;
-    Lidar2DScan lidar_scan = 2;
+    Lidar2DScan lidar = 2;
 }
 
 message NikolaiManyScans {
