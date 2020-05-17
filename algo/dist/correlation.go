@@ -1,7 +1,30 @@
 package dist
 
+import "gonum.org/v1/mat"
+
 // map correlation here
 // re-implemented p2_utils
+
+/*
+
+# INPUT
+# im              the map
+# x_im,y_im       physical x,y positions of the grid map cells
+# vp(0:2,:)       occupied x,y positions from range sensor (in physical unit)
+# xs,ys           physical x,y,positions you want to evaluate "correlation"
+#
+# OUTPUT
+# c               sum of the cell values of all the positions hit by range sensor
+
+*/
+
+// Get sum of cell values at all positions where range sensor ray ends
+//
+// arguments
+// im -
+func MapCorrleation() int {
+
+}
 
 /*
 
