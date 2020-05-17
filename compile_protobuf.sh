@@ -1,1 +1,1 @@
-protoc --go_out=. sensor.proto
+protoc --go_out=. --python_out=py/. sensor.proto
