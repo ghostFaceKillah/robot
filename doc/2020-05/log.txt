@@ -35,3 +35,5 @@ So now I will focus on transferring the data from python to go.
 We will need some protobuf messages. We will serialize to these on python side
 and read them again in go.
 
+Done serializing messages on python side!
+Now will read them and show them in go!

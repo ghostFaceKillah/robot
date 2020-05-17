@@ -4,6 +4,7 @@ import "gonum.org/v1/mat"
 
 // map correlation here
 // re-implemented p2_utils
+// that's the right import "gonum.org/v1/gonum/mat"
 
 /*
 
@@ -21,10 +22,11 @@ import "gonum.org/v1/mat"
 // Get sum of cell values at all positions where range sensor ray ends
 //
 // arguments
-// im -
-func MapCorrleation() int {
+// cmap - the map with costs - mat.matrix
 
-}
+//func MapCorrleation(cmap mat.Matrix) int {
+//
+//}
 
 /*
 
